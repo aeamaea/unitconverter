@@ -14,16 +14,15 @@ const massFactor = 2.204    // 1 kilogram = 2.204 pound
 
 // console.log(meters,feet,liters,gallons,kgs,lbs)
 
-const s = (units) => {
-     let x = units > 1 ? "s" : ""
-     return x
-}
-
 
 const doConversion = () => {
     
     // Start out with Unit values, Convert when user gives us something.
     let units = Number(unitInputEl.value) > 1 ? Number(unitInputEl.value) : 1
+    // determine pluralization - no need to call the function 6 times. (rev3) 
+    let ss = units > 1 ? "s" : ""
+    let eeoo = units > 1 ? "ee" : "oo"
+     
     // console.log(units)
 
      // length 
@@ -31,21 +30,21 @@ const doConversion = () => {
     const f2m = (units / lenFactor).toFixed(3)
      
     lengthEl.innerHTML = `
-    <p>${units} Meter${s(units)} = ${m2f} Feet | ${units} F${units > 1 ? "ee" : "oo"}t = ${f2m} Meters</p>
+    <p>${units} Meter${ss} = ${m2f} Feet | ${units} F${eeoo}t = ${f2m} Meters</p>
     `
      // volume
     const l2g = (units * volFactor).toFixed(3)
     const g2l = (units / volFactor).toFixed(3)
      
     volumeEl.innerHTML = `
-    <p>${units} Liter${s(units)} = ${l2g} Gallons | ${units} Gallon${s(units)} = ${g2l} Liters </p>
+    <p>${units} Liter${ss} = ${l2g} Gallons | ${units} Gallon${ss} = ${g2l} Liters </p>
     `
     // mass
     const kg2lb = (units * massFactor).toFixed(3)
     const lb2kg = (units / massFactor).toFixed(3) 
      
     massEl.innerHTML = `
-    <p>${units} Kilo${s(units)} = ${kg2lb} Pounds | ${units} Pound${s(units)} = ${lb2kg} Kilos</p>
+    <p>${units} Kilo${ss} = ${kg2lb} Pounds | ${units} Pound${ss} = ${lb2kg} Kilos</p>
     `
   
     
